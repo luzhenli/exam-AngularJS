@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="frameworks/jquery-2.1.4/jquery.min.js"></script>
+    <script src="frameworks/angular-1.4.0/angular.min.js"></script>
+    <script src="frameworks/angular-1.4.0/angular-route.min.js"></script>
+    <script>
+        var app = angular.module("app",["ng"]);
+        app.controller("mainCtrl",function ($scope) {
+            $scope.types = [{
+                id:1,
+                name:"简单"
+            },{
+                id:2,
+                name:"中等"
+            },{
+                id:3,
+                name:"难"
+            }];
+            $scope.t1 = 1;
+            $scope.t2 = $scope.types[1];
+            $scope.t3 = 3;
+        });
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+    题目类型
+    <select ng-model="t1">
+        <option value="{{type.id}}" ng-repeat="type in types">
+            {{type.name}}
+        </option>
+    </select>
+    <br>
+    {{t1}}
+    <br>
+
+    题目类型
+    <select ng-model="t2"
+            ng-options="type.name for type in types"></select>
+    <br>
+    {{t2}}
+
+
+    <br>
+
+    题目类型
+    <select ng-model="t3"
+            ng-options="type.id as type.name for type in types"></select>
+    <br>
+    {{t3}}
+
+</body>
+</html>

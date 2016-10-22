@@ -1,0 +1,126 @@
+{{subject}}
+<div class="editingarea">
+    <div class="c_flex"><span class="c_flexible"></span></div>
+    <div class="Topictitle">添加题目</div>
+    <div class="c_editview">
+        <div class="Problem">
+            <div class="Attributetit">题目题干
+                题目类型：
+                <select ng-model="subject.typeId"
+                        ng-options="type.id as type.realName for type in types"></select>&nbsp;
+                难度级别
+                <select ng-model="subject.levelId"
+                ng-options="level.id as level.realName for level in levels"></select>&nbsp;
+                所属方向
+                <select ng-model="subject.departmentId"
+                ng-options="department.id as department.name for department in departments"></select>&nbsp;
+                所属知识点
+                <select ng-model="subject.topicId"
+                ng-options="topic.id as topic.title for topic in topics | selectTopics : subject.departmentId"> </select>&nbsp;
+            </div>
+
+            <div class="Attributetit">题目题干</div>
+            <div class="Problemcontent">
+                <textarea cols="60" rows="4" ng-model="subject.stem"></textarea>
+            </div>
+        </div>
+        <!--单选视图-->
+        <div class="Answeroptions" ng-show="subject.typeId==1">
+            <div class="Attributetit">答案选项<em>(通过勾选每个选项下面的框难吃时间点咳嗽打开)</em></div>
+            <div class="c_condition"><span class="icon_add"><em class="icon_r" style="float: left">添加选项</em></span></div>
+            <div class="Answercontent">
+                <div class="Answerpart">
+                    <div class="Answerpart_left">
+                        <p>A</p><span><input type="radio" name="correct" value="0" select-option /></span>
+                    </div>
+                    <div class="Answerpart_right">
+                        <textarea cols="50" rows="3" ng-model="subject.choiceContent[0]"></textarea>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="Answerpart">
+                    <div class="Answerpart_left">
+                        <p>B</p><span><input type="radio" name="correct" value="1" select-option/></span>
+                    </div>
+                    <div class="Answerpart_right">
+                        <textarea cols="50" rows="3" ng-model="subject.choiceContent[1]"></textarea>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="Answerpart">
+                    <div class="Answerpart_left">
+                        <p>C</p><span><input type="radio"  name="correct" value="2" select-option/></span>
+                    </div>
+                    <div class="Answerpart_right">
+                        <textarea cols="50" rows="3" ng-model="subject.choiceContent[2]"></textarea>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="Answerpart">
+                    <div class="Answerpart_left">
+                        <p>D</p><span><input type="radio" name="correct" value="3" select-option/></span>
+                    </div>
+                    <div class="Answerpart_right">
+                        <textarea cols="50" rows="3" ng-model="subject.choiceContent[3]"></textarea>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <!--多选视图-->
+        <div class="Answeroptions" ng-show="subject.typeId==2">
+            <div class="Attributetit">答案选项<em>(通过勾选每个选项下面的框难吃时间点咳嗽打开)</em></div>
+            <div class="c_condition"><span class="icon_add"><em class="icon_r" style="float: left">添加选项</em></span></div>
+            <div class="Answercontent">
+                <div class="Answerpart">
+                    <div class="Answerpart_left">
+                        <p>A</p><span><input type="checkbox" value="0" select-option/></span>
+                    </div>
+                    <div class="Answerpart_right"></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="Answerpart">
+                    <div class="Answerpart_left">
+                        <p>B</p><span><input type="checkbox" value="1" select-option/></span>
+                    </div>
+                    <div class="Answerpart_right"></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="Answerpart">
+                    <div class="Answerpart_left">
+                        <p>C</p><span><input type="checkbox" value="2" select-option/></span>
+                    </div>
+                    <div class="Answerpart_right"></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="Answerpart">
+                    <div class="Answerpart_left">
+                        <p>D</p><span><input type="checkbox" value="3" select-option/></span>
+                    </div>
+                    <div class="Answerpart_right"></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div class="Answeroptions" ng-show="subject.typeId==3">
+            <div class="Attributetit">标准答案</div>
+            <div class="Problemcontent">
+                <textarea cols="60" rows="4" ng-model="subject.answer"></textarea>
+            </div>
+        </div>
+        <div class="Problem">
+            <div class="Attributetit">答案解析</div>
+            <div class="Problemcontent">
+                <textarea cols="60" rows="4" ng-model="subject.analysis"></textarea>
+            </div>
+        </div>
+        <div class="btn_left">
+            <span class="btnL" ng-click="submit()"><em class="btnR">保存并继续</em></span>
+            <span class="btnL" ng-click="submitAndClose()"><em class="btnR">保存并关闭</em></span>
+        </div>
+    </div>
+</div>
+</div>
